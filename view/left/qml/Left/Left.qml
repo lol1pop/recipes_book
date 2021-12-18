@@ -43,42 +43,14 @@ LeftTemplate {
       }
 
 //      T.Button {
-//        id: files
+//        id: favorites
 //        Layout.fillWidth: true
 //
-//        text: "Files"
-//        code: "files"
+//        text: "Favorites"
+//        code: "favorites"
 //        image: "qrc:/qml/assets/ic_insert_drive_file_black_24px.svg"
 //      }
 //
-//      T.Button {
-//        id: hosting
-//        Layout.fillWidth: true
-//
-//        text: "Hosting"
-//        code: "hosting"
-//        image: "qrc:/qml/assets/ic_folder_black_24px.svg"
-//      }
-//
-//      T.Button {
-//        id: wallet
-//        Layout.fillWidth: true
-//
-//        text: "Wallet"
-//        code: "wallet"
-//        image: "qrc:/qml/assets/ic_account_balance_wallet_black_24px.svg"
-//
-//        checked: true
-//      }
-//
-//      T.Button {
-//        id: terminal
-//        Layout.fillWidth: true
-//
-//        text: "Terminal"
-//        code: "terminal"
-//        image: "qrc:/qml/assets/ic_code_black_24px.svg"
-//      }
     }
 
     Item {
@@ -97,21 +69,10 @@ LeftTemplate {
         recipes.clicked();
         break;
 
-//      case "files":
-//        files.clicked();
+//      case "favorites":
+//        favorites.clicked();
 //        break;
-//
-//      case "hosting":
-//        hosting.clicked();
-//        break;
-//
-//      case "wallet":
-//        wallet.clicked();
-//        break;
-//
-//      case "terminal":
-//        terminal.clicked();
-//        break;
+
     }
   }
 }

@@ -14,7 +14,6 @@ import (
 	_ "github.com/lol1pop/recipes_book/view/left"
 
 	_ "github.com/lol1pop/recipes_book/recipes"
-	//_ "github.com/lol1pop/recipes_book/recipes"
 
 	"github.com/lol1pop/recipes_book/controller"
 )
@@ -49,7 +48,6 @@ func main() {
 		//view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "top", "qml"))
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "left", "qml"))
 
-		//view.Engine().AddImportPath(filepath.Join(pathToProject, "recipes", "qml"))
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "recipes", "qml"))
 
 		view.SetSource(core.QUrl_FromLocalFile(path))

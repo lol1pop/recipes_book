@@ -198,7 +198,7 @@ func (c *ThemeController) change() {
 	//colorDialog.Show()
 	//TODO: there is no light theme yet
 	/*
-		if c.Name() == "dark" {
+		if c.Title() == "dark" {
 			c.SetName("light")
 		} else {
 			c.SetName("dark")
