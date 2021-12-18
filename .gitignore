@@ -44,6 +44,14 @@ Makefile*
 *.qm
 *.prl
 
+# Qt-es golang
+moc*.go
+moc*.cpp
+moc*.h
+rcc*.go
+rcc*.cpp
+*.qrc
+
 # Qt unit tests
 target_wrapper.*
 
