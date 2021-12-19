@@ -7,20 +7,10 @@ import (
 )
 
 type folderUploadTemplate struct {
-	filesDialogTemplate
-
-	_ func(string) `signal:"uploadFolder,->(controller.Controller)"`
+	dialogTemplate
 
 	_ func(string, string) `signal:"download,->(controller.Controller)"`
 	_ func(string)         `signal:"showDownload,<-(controller.Controller)"`
-}
-
-func (t *folderUploadTemplate) show(cident string) {
-	if cident == "folder" {
-		t.Blur(true)
-		t.UploadFolder(widgets.QFileDialog_GetExistingDirectory(nil, "Select a folder to upload", "", widgets.QFileDialog__ShowDirsOnly|widgets.QFileDialog__DontResolveSymlinks))
-		t.Blur(false)
-	}
 }
 
 func (t *folderUploadTemplate) showDownload(name string) {

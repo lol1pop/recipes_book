@@ -34,10 +34,14 @@ TableView {
 
   TableColumnDelegate { role: "COOKING_METHOD" }
 
-  TableColumnDelegate { role: "RATING" }
+  TableColumnActionDelegate {
+    role: "RATING"
+  }
 
   TableColumnActionDelegate {
     role: "ACTIONS"
     tableView: tableView
   }
+
+  onDoubleClicked: template.doubleClicked(tableView.model.data(tableView.model.index(tableView.currentRow, 0), Qt.UserRole + 5))
 }

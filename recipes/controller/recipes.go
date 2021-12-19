@@ -2,35 +2,46 @@ package controller
 
 import (
 	"encoding/json"
-	"time"
-
+	"fmt"
+	"github.com/google/uuid"
 	"github.com/therecipe/qt/core"
+	"github.com/therecipe/qt/gui"
 
 	"github.com/lol1pop/recipes_book/recipes/model"
 )
 
-var RecipesController *recipesController
+var RController *RecipesController
 
-type recipesController struct {
+type RecipesController struct {
 	core.QObject
 
 	_ func() `constructor:"init"`
 
 	_ *model.RecipesModel `property:"model"`
+
+	_ func(ID string) `signal:"doubleClicked,auto"`
 }
 
-func (c *recipesController) init() {
-	RecipesController = c
+func (c *RecipesController) init() {
+	RController = c
 
 	c.SetModel(model.NewRecipesModel(nil))
 
 	go c.loop()
 }
 
-func (c *recipesController) loop() {
-	for range time.NewTicker(1 * time.Second).C {
-		var df []model.Recipe
-		json.Unmarshal([]byte(DEMO_RECIPES), &df)
-		c.Model().UpdateWith(df)
+func (c *RecipesController) loop() {
+	//for range time.NewTicker(1 * time.Second).C {
+	var df []model.Recipe
+	json.Unmarshal([]byte(DEMO_RECIPES), &df)
+	for i, _ := range df {
+		df[i].ID = uuid.New()
 	}
+	c.Model().UpdateWith(df)
+	fmt.Printf("loop")
+	//}
+}
+
+func (c *RecipesController) doubleClicked(ID string) {
+	gui.QDesktopServices_OpenUrl(core.NewQUrl3("https://example.com/"+ID, 0))
 }

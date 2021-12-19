@@ -1,10 +1,11 @@
 import QtQuick 2.7           //Item
-import RecipesTemplate 1.0
+import RecipesTemplate 1.0   //RecipesTemplate
+import Dialog 1.0            //RecipeInfo
 
 RecipesTemplate {
   id: template
 
-  visible: false
+  Info {}
 
   Header {
     id: header

@@ -29,6 +29,5 @@ func (t *recipesTemplate) init() {
 	t.SetRecipesModel(t.c.Model().Filter)
 
 	//needed here, because those are non qml views
-	dialog.NewFilesUploadTemplate(nil)
 	dialog.NewFolderUploadTemplate(nil)
 }

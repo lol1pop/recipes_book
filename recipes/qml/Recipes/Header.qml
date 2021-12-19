@@ -13,7 +13,21 @@ StackItemHeader {
     HeaderButton {
       anchors {
         top: parent.top
-        right: send.left
+        right: create.left
+        bottom: parent.bottom
+      }
+      width: Theme.minimumWidth * 0.1
+
+      text: "Info"
+      code: "info"
+      image: "qrc:/qml/assets/ic_share_black_24px.svg"
+    }
+
+    HeaderButton {
+      id: create
+      anchors {
+        top: parent.top
+        right: parent.left
         bottom: parent.bottom
       }
       width: Theme.minimumWidth * 0.1
@@ -21,36 +35,6 @@ StackItemHeader {
       text: "Create Recipes"
       code: "create"
       image: "qrc:/qml/assets/ic_create_black_24px.svg"
-    }
-
-    HeaderButton {
-      id: send
-
-      anchors {
-        top: parent.top
-        right: recover.left
-        bottom: parent.bottom
-      }
-      width: Theme.minimumWidth * 0.1
-
-      text: "Upload Recipes"
-      code: "files"
-      image: "qrc:/qml/assets/ic_cloud_upload_black_24px.svg"
-    }
-
-    HeaderButton {
-      id: recover
-
-      anchors {
-        top: parent.top
-        right: parent.right
-        bottom: parent.bottom
-      }
-      width: Theme.minimumWidth * 0.1
-
-      text: "Add Favorites"
-      code: "folder"
-      image: "qrc:/qml/assets/ic_create_new_folder_black_24px.svg"
     }
   }
 }

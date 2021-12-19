@@ -19,34 +19,54 @@ TableViewColumn {
 
   delegate: Component { Item {
 
-//    TableColumnDelegateButton {
-//      id: favoritsButton
-//
-//      anchors {
-//        top: parent.top
-//        left: parent.left
-//        bottom: parent.bottom
-//        }
-//      width: parent.width * 0.75
-//
-//      source: "qrc:/qml/assets/ic_cloud_download_black_24px.svg"
-//      accent: Theme.accent
-//      onClicked: template.showDownload(tableView.model.data(tableView.model.index(styleData.row, 0), Qt.UserRole + 1))
-//
-//      visible: styleData.value.available != null ? styleData.value.available : false
-//    }
+        ProgressBar {
+          id: progressBar
 
-    TableColumnDelegateButton {
-      anchors {
-        top: parent.top
-        left: parent.left //favoritsButton.right
-        right: parent.right
-        bottom: parent.bottom
-      }
+          anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+          }
+          width: parent.width * 0.75
+          height: parent.height * 0.6
 
-      source: "qrc:/qml/assets/ic_delete_forever_black_24px.svg"
-      accent: Theme.walletTableHighlight
-      onClicked: template.deleteRequest(tableView.model.data(tableView.model.index(styleData.row, 0), Qt.UserRole + 1))
+          progressBarText: styleData.value.text != null ? styleData.value.text : ""
+          value: styleData.value.value != null ? styleData.value.value : 0
+
+          visible: !downloadButton.visible || !deleteButton.visible
+        }
+
+        TableColumnDelegateButton {
+          id: downloadButton
+
+          anchors {
+            top: parent.top
+            left: parent.left
+            bottom: parent.bottom
+            }
+          width: parent.width * 0.75
+
+          source: "qrc:/qml/assets/ic_cloud_download_black_24px.svg"
+          accent: Theme.accent
+          onClicked: template.showDownload(tableView.model.data(tableView.model.index(styleData.row, 0), Qt.UserRole + 1))
+
+          visible: styleData.value.available != null ? styleData.value.available : false
+        }
+
+        TableColumnDelegateButton {
+          id: deleteButton
+          anchors {
+            top: parent.top
+            left: downloadButton.right
+            right: parent.right
+            bottom: parent.bottom
+          }
+
+          source: "qrc:/qml/assets/ic_delete_forever_black_24px.svg"
+          accent: Theme.walletTableHighlight
+          onClicked: template.deleteRequest(tableView.model.data(tableView.model.index(styleData.row, 0), Qt.UserRole + 1))
+
+          visible: styleData.value.available != null ? styleData.value.available : false
+        }
     }
-  } }
+  }
 }

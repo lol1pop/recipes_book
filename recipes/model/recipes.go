@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/therecipe/qt/core"
 )
@@ -121,10 +122,18 @@ func (m *RecipesModel) data(index *core.QModelIndex, role int) *core.QVariant {
 		return core.NewQVariant1(dbItem.CookingMethod)
 
 	case role == int(core.Qt__UserRole)+6:
-		return core.NewQVariant1(dbItem.Rating)
+		return core.NewQVariant1(map[string]*core.QVariant{
+			"text":  core.NewQVariant1(fmt.Sprintf("%.1f%", dbItem.Rating)),
+			"value": core.NewQVariant1(dbItem.Rating),
+		})
 
 	case role == int(core.Qt__UserRole)+7:
-		return core.NewQVariant1(map[string]*core.QVariant{})
+		return core.NewQVariant1(map[string]*core.QVariant{
+			"available": core.NewQVariant9(true),
+		})
+
+	case role == int(core.Qt__UserRole)+8:
+		return core.NewQVariant1(dbItem.ID.String())
 	}
 
 	return core.NewQVariant()
