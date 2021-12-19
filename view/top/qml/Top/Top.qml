@@ -19,21 +19,6 @@ TopTemplate {
         Layout.fillWidth: true
         Layout.fillHeight: true
       }
-
-      Status {
-        Layout.preferredWidth: Theme.minWidth * 0.2
-        Layout.fillHeight: true
-      }
-
-      Lock {
-        Layout.preferredWidth: height
-        Layout.fillHeight: true
-      }
-
-      Color {
-        Layout.preferredWidth: height
-        Layout.fillHeight: true
-      }
     }
   }
 }

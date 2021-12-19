@@ -1,20 +1,10 @@
 package controller
 
 import (
-	"os"
-	"path/filepath"
-	"strings"
-
-	"github.com/therecipe/qt/core"
-
-	maincontroller "github.com/lol1pop/recipes_book/controller"
+	"fmt"
 	_ "github.com/lol1pop/recipes_book/view/controller"
+	"github.com/therecipe/qt/core"
 )
-
-func init() {
-	if maincontroller.Controller != nil {
-	}
-}
 
 var Controller *dialogController
 
@@ -24,40 +14,24 @@ type dialogController struct {
 	_ func() `constructor:"init"`
 
 	_ func(cident string) `signal:"show"`
-	_ func(string)        `signal:"showDownload"`
 	_ func(bool)          `signal:"blur,->(controller.Controller)"`
 
-	_ func([]string)       `signal:"uploadFiles,auto"`
-	_ func(string)         `signal:"uploadFolder,auto"`
+	_ func(string)         `signal:"showDownload"`
 	_ func(string, string) `signal:"download,auto"`
 
-	_ func() bool `slot:"isLocked,->(maincontroller.Controller)"`
+	_ func(ID string) *core.QVariant `slot:"info,auto"`
+	//_ func() string                            `slot:"receive,auto"`
+	//_ func(amount, dest string) *core.QVariant `slot:"send,auto"`
+	//_ func(seed string) *core.QVariant         `slot:"recover,auto"`
 }
 
 func (c *dialogController) init() {
 	Controller = c
 }
 
-func (c *dialogController) uploadFiles(files []string) {
-}
-
-func (c *dialogController) uploadFolder(source string) {
-	var files []string
-	filepath.Walk(source, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			println("Warning: skipping file:", err.Error())
-			return nil
-		}
-		if info.IsDir() {
-			return nil
-		}
-		if strings.HasPrefix(info.Name(), ".") {
-			return nil
-		}
-		files = append(files, path)
-		return nil
-	})
-	c.uploadFiles(files)
+func (c *dialogController) info(ID string) *core.QVariant {
+	fmt.Printf("ERRRRROOORRR!!! lol net  id=" + ID)
+	return core.NewQVariant()
 }
 
 func (c *dialogController) download(name, path string) {
