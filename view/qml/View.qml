@@ -5,7 +5,7 @@ import Theme 1.0              //Theme
 
 import ViewTemplate 1.0       //ViewTemplate
 import Left 1.0               //Left
-//import Top 1.0                //Top
+import Top 1.0                //Top
 
 ViewTemplate {
   Rectangle {
@@ -23,19 +23,19 @@ ViewTemplate {
       width: Theme.minWidth * 0.2
     }
 
-//    Top {
-//      id: topControl
-//      anchors {
-//        top: parent.top
-//        left: leftControl.right
-//        right: parent.right
-//      }
-//      height: Theme.minHeight * 0.09
-//    }
+    Top {
+      id: topControl
+      anchors {
+        top: parent.top
+        left: leftControl.right
+        right: parent.right
+      }
+      height: Theme.minHeight * 0.09
+    }
 
     Stack {
       anchors {
-        top: parent.top //topControl.bottom
+        top: topControl.bottom
         left: leftControl.right
         right: parent.right
         bottom: parent.bottom

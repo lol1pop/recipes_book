@@ -12,6 +12,7 @@ import (
 	_ "github.com/lol1pop/recipes_book/theme"
 	_ "github.com/lol1pop/recipes_book/view"
 	_ "github.com/lol1pop/recipes_book/view/left"
+	_ "github.com/lol1pop/recipes_book/view/top"
 
 	_ "github.com/lol1pop/recipes_book/recipes"
 
@@ -45,7 +46,7 @@ func main() {
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "theme", "qml"))
 
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "qml"))
-		//view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "top", "qml"))
+		view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "top", "qml"))
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "view", "left", "qml"))
 
 		view.Engine().AddImportPath(filepath.Join(pathToProject, "recipes", "qml"))
