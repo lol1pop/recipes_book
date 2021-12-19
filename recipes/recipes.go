@@ -16,12 +16,17 @@ type recipesTemplate struct {
 	_ func() `constructor:"init"`
 
 	_ *core.QAbstractItemModel `property:"RecipesModel"`
+
+	_ func(string) `signal:"doubleClicked,->(this.c)"`
+
+	c *controller.RecipesController
 }
 
 func (t *recipesTemplate) init() {
-	c := controller.NewRecipesController(nil)
 
-	t.SetRecipesModel(c.Model().Filter)
+	t.c = controller.NewRecipesController(nil)
+
+	t.SetRecipesModel(t.c.Model().Filter)
 
 	//needed here, because those are non qml views
 	dialog.NewFilesUploadTemplate(nil)

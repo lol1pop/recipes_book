@@ -5,28 +5,44 @@ import (
 	"github.com/therecipe/qt/core"
 )
 
-type TCookingDish string
-type TCookingMethod string
+type TCookingDish int
+type TCookingMethod int
 
 //soup hot dessert stove for cooking multicooker microwave
 const (
-	SOUP    TCookingDish = "soup"
-	HOT     TCookingDish = "hot"
-	DESSERT TCookingDish = "dessert"
+	SOUP TCookingDish = iota + 1
+	HOT
+	DESSERT
 
-	COOKER       TCookingMethod = "cooker"
-	STOVE        TCookingMethod = "stove"
-	MICROWAVE    TCookingMethod = "microwave"
-	MULTI_COOKER TCookingMethod = "multi_cooker"
+	COOKER TCookingMethod = iota + 1
+	STOVE
+	MICROWAVE
+	MULTI_COOKER
 )
 
+func (d TCookingDish) String() string {
+	return [...]string{"soup", "hot", "dessert"}[d-1]
+}
+
+func (m TCookingMethod) String() string {
+	return [...]string{"cooker", "stove", "microwave", "multi_cooker"}[m-1]
+}
+
+func (d TCookingDish) EnumIndex() int {
+	return int(d)
+}
+
+func (m TCookingMethod) EnumIndex() int {
+	return int(m)
+}
+
 type Recipe struct {
-	Title          string
-	Picture        string
-	ReadyInMinutes float64
-	CookingDish    string
-	CookingMethod  string
-	Rating         float64
+	Title          string  `json:"title"`
+	Picture        string  `json:"picture"`
+	ReadyInMinutes float64 `json:"readyInMinutes"`
+	CookingDish    string  `json:"cookingDish"`
+	CookingMethod  string  `json:"cookingMethod"`
+	Rating         float64 `json:"rating"`
 
 	ID               uuid.UUID                     `json:"id"`
 	Ingredients      []string                      `json:"ingredients"`
